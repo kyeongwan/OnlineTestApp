@@ -1,3 +1,7 @@
+package test.socket;
+
+import test.Global;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -19,6 +23,7 @@ public class SocketServerThread extends Thread{
             */
             while(true){
                 Socket socket = serverSocket.accept();
+                System.out.println(socket.getInetAddress()+" 님이 접속했습니다.");
                 SocketThread socketThread = new SocketThread(socket);
                 socketThread.start();
             }
