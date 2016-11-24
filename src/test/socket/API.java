@@ -3,6 +3,10 @@ package test.socket;
 import test.DB;
 import test.model.Problem;
 import test.model.Student;
+import test.ui.Main;
+import test.ui.ProblemStatus;
+
+import javax.swing.*;
 
 /**
  * Created by lk on 2016. 11. 23..
@@ -41,15 +45,19 @@ public class API {
             }
         }
 
-        if(request.contains("answer")){
+        if(request.contains("answer")){     // answer problemNo answerNo StudentID
             String data[] = request.split(" ");
             if(data.length != 4)
                 return "fail\r\n";
             if(DB.getInstance().getProblemMap().containsKey(Integer.parseInt(data[1]))){
+                int problemNo = Integer.parseInt(data[1]);
+                int answerNo = Integer.parseInt(data[2]);
                 System.out.println(DB.getInstance().getStudentMap().get(data[3]).getId());
-                Problem p = DB.getInstance().getProblemMap().get(Integer.parseInt(data[1]));
+                Problem p = DB.getInstance().getProblemMap().get(problemNo);
                 Student s = DB.getInstance().getStudentMap().get(data[3]);
-                p.getMap().get(Integer.parseInt(data[2])).add(s);
+                p.getMap().get(answerNo).add(s);
+                ProblemStatus pa = Main.getInstance().problemPanel[problemNo];
+                pa.studentListLabel[answerNo].setText(pa.studentListLabel[answerNo].getText() + "<br>" + s.getName());
                 if(p.getAnwer() == Integer.parseInt(data[2]))
                     s.setGrade(s.getGrade() + 10);
 

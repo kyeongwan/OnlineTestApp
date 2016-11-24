@@ -2,7 +2,9 @@ package test;
 
 import test.model.Problem;
 import test.model.Student;
+import test.ui.ProblemStatus;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class DB {
@@ -12,9 +14,12 @@ public class DB {
 	private HashMap<Integer, Problem> problemMap;
 
 
+
+
 	private DB(){
 		studentMap = new HashMap<>();
 		problemMap = new HashMap<>();
+
 
 		problemMap.put(1, new Problem(1, "aaa", 3));
 		problemMap.put(2, new Problem(1,"aaa", 3 ));
@@ -26,6 +31,9 @@ public class DB {
 		problemMap.put(8, new Problem(2,"aaa", 3));
 		problemMap.put(9, new Problem(2,"aaa", 3));
 		problemMap.put(10, new Problem(2,"aaa", 3));
+
+
+
 
 	}
 
@@ -42,6 +50,8 @@ public class DB {
 			instance = new DB();
 		return instance;
 	}
+
+
 
 
 	
