@@ -1,5 +1,7 @@
 package test.model;
 
+import test.DB;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -12,6 +14,8 @@ public class Problem {
     String question;
     int anwer;
     HashMap<Integer, ArrayList<Student>> map;
+    int n = 0;
+
 
     public Problem(int type, String question, int answer) {
         this.type = type;
@@ -24,6 +28,11 @@ public class Problem {
         }
     }
 
+
+    public HashMap<Integer, ArrayList<Student>> getMap() {
+        return map;
+    }
+
     public int getAnwer() {
         return anwer;
     }
@@ -32,7 +41,13 @@ public class Problem {
         return question;
     }
 
-    public HashMap<Integer, ArrayList<Student>> getMap() {
-        return map;
+    public void addAnswerToMap(int answerNo, Student s) {
+        map.get(answerNo - 1).add(s);
+        n++;
+    }
+
+
+    public int getN() {
+        return n;
     }
 }

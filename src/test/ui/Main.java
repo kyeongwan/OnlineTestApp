@@ -51,7 +51,7 @@ public class Main {
 
         problemPanel = new ProblemStatus[5];
         for (int i = 0; i < problemPanel.length; i++) {
-            problemPanel[i] = new ProblemStatus((i + 1) + "번", i + 1);
+            problemPanel[i] = new ProblemStatus((i + 1) + "번", (i + 1));
             problemPanel[i].setBounds(10 + i*250 + i*20, 0, 250, 300);
             panel.add(problemPanel[i]);
         }

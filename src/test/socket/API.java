@@ -6,7 +6,6 @@ import test.model.Student;
 import test.ui.Main;
 import test.ui.ProblemStatus;
 
-import javax.swing.*;
 
 /**
  * Created by lk on 2016. 11. 23..
@@ -55,9 +54,12 @@ public class API {
                 System.out.println(DB.getInstance().getStudentMap().get(data[3]).getId());
                 Problem p = DB.getInstance().getProblemMap().get(problemNo);
                 Student s = DB.getInstance().getStudentMap().get(data[3]);
-                p.getMap().get(answerNo).add(s);
-                ProblemStatus pa = Main.getInstance().problemPanel[problemNo];
-                pa.studentListLabel[answerNo].setText(pa.studentListLabel[answerNo].getText() + "<br>" + s.getName());
+                p.addAnswerToMap(answerNo, s);
+
+                ProblemStatus pa = Main.getInstance().problemPanel[problemNo - 1];
+                pa.studentListLabel[answerNo-1].setText(pa.studentListLabel[answerNo-1].getText() + "\n" + s.getName());
+
+                pa.setProgressbar();
                 if(p.getAnwer() == Integer.parseInt(data[2]))
                     s.setGrade(s.getGrade() + 10);
 

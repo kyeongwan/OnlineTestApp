@@ -2,9 +2,6 @@ package test;
 
 import test.model.Problem;
 import test.model.Student;
-import test.ui.ProblemStatus;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class DB {
