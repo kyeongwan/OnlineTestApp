@@ -46,6 +46,10 @@ public class Problem {
         n++;
     }
 
+    public int getType() {
+        return type;
+    }
+
 
     public int getN() {
         return n;

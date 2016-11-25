@@ -15,6 +15,7 @@ public class ProblemStatus extends JPanel {
     public JProgressBar[] progressbar;
     public JTextArea[] studentListLabel;
     int no;
+    int cnt;
 
     /**
      * Create the panel.
@@ -41,9 +42,10 @@ public class ProblemStatus extends JPanel {
         add(panel_1, BorderLayout.CENTER);
         panel_1.setLayout(new GridLayout(1, 5, 0, 0));
 
+        cnt = problem.getType() == 1 ? 2 : 5;
 
         JScrollPane scrollPane;
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < cnt; i++) {
 
             JPanel answerOnePanel = new JPanel();
             answerOnePanel.setBounds(i * 50, 0, 50, 300);
@@ -54,7 +56,7 @@ public class ProblemStatus extends JPanel {
             progressbar[i].setBounds(0, 0, 50, 150);
             progressbar[i].setOrientation(SwingConstants.VERTICAL);
 
-            studentListLabel[i] = new JTextArea("학생이름");
+            studentListLabel[i] = new JTextArea((i+1) + "\n" + "학생이름");
             studentListLabel[i].setEnabled(false);
             studentListLabel[i].setEditable(false);
             scrollPane = new JScrollPane(studentListLabel[i]);
@@ -78,7 +80,7 @@ public class ProblemStatus extends JPanel {
 
         int n = DB.getInstance().getProblemMap().get(no + 1).getN();
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < cnt; i++) {
             progressbar[i].setValue((int) ((float)problem.getMap().get(i).size() / (float)n * (float)100));
         }
 

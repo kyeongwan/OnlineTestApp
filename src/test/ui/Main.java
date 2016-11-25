@@ -42,17 +42,21 @@ public class Main {
      */
     private void initialize() {
         frame = new JFrame();
-        frame.setBounds(100, 100, 1370, 545);
+        frame.setBounds(100, 100, 1370, 700);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel panel = new JPanel();
         frame.getContentPane().add(panel, BorderLayout.CENTER);
         panel.setLayout(null);
 
-        problemPanel = new ProblemStatus[5];
-        for (int i = 0; i < problemPanel.length; i++) {
+        problemPanel = new ProblemStatus[10];
+        for (int i = 0, j = 0, k = 0; i < problemPanel.length; i++, j++) {
+            if (i == problemPanel.length / 2) {
+                j = 0;
+                k++;
+            }
             problemPanel[i] = new ProblemStatus((i + 1) + "번", (i + 1));
-            problemPanel[i].setBounds(10 + i*250 + i*20, 0, 250, 300);
+            problemPanel[i].setBounds(10 + j * 250 + j * 20, k * 310, 250, 300);
             panel.add(problemPanel[i]);
         }
 
