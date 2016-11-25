@@ -10,8 +10,35 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="kr.onlinetest.MainActivity">
 
-    <TextView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:inputType="textPersonName"
+        android:text="이름"
+        android:ems="10"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="102dp"
+        android:id="@+id/et_name" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="학번"
+        android:ems="10"
+        android:layout_marginTop="44dp"
+        android:id="@+id/et_id"
+        android:layout_below="@+id/et_name"
+        android:layout_alignLeft="@+id/et_name"
+        android:layout_alignStart="@+id/et_name" />
+
+    <Button
+        android:text="로그인"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_id"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp"
+        android:id="@+id/bt_login" />
 </RelativeLayout>
