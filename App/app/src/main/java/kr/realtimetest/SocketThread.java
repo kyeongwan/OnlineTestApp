@@ -1,12 +1,10 @@
-package kr.onlinetest;
+package kr.realtimetest;
 
-import android.telecom.Call;
 import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
@@ -29,8 +27,9 @@ public class SocketThread extends Thread {
 
     public void run() {
         try {
-            socket = new Socket("10.120.135.107", 8080);
+            socket = new Socket("192.168.0.7", 8080);
             Log.e("socket", socket.getInetAddress() + "");
+            callback.response("connect");
             writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
             reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
@@ -48,6 +47,9 @@ public class SocketThread extends Thread {
             callback.response(api + "/" + response);
         }catch (IOException e){
             e.printStackTrace();
+        }catch (NullPointerException e){
+            e.printStackTrace();
+            callback.response("null");
         }
     }
 }

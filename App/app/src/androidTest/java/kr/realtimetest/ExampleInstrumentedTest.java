@@ -1,4 +1,4 @@
-package kr.onlinetest;
+package kr.realtimetest;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

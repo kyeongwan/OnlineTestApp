@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 
 public class Main {
 
-    private JFrame frame;
+    public JFrame frame;
     private static Main instance;
     public ProblemStatus problemPanel[];
 

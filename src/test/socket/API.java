@@ -6,6 +6,8 @@ import test.model.Student;
 import test.ui.Main;
 import test.ui.ProblemStatus;
 
+import javax.swing.*;
+
 
 /**
  * Created by lk on 2016. 11. 23..
@@ -38,7 +40,8 @@ public class API {
         if(request.contains("question")){
             String data[] = request.split(" ");
             if(DB.getInstance().getProblemMap().containsKey(Integer.parseInt(data[1]))){
-                return DB.getInstance().getProblemMap().get(Integer.parseInt(data[1])).getQuestion() + "\r\n";
+                Problem p = DB.getInstance().getProblemMap().get(Integer.parseInt(data[1]));
+                return p.getType() + "/" + p.getQuestion() + "\r\n";
             }else{
                 return "fail\r\n";
             }
@@ -66,6 +69,13 @@ public class API {
                 return "success\r\n";
             }
             return "fail\r\n";
+        }
+
+        if(request.contains("event")){
+            String data[] = request.split(" ");
+            String id = data[1];
+            String action = data[2];
+            JOptionPane.showMessageDialog(Main.getInstance().frame, DB.getInstance().getStudentMap().get(id).getName() + " 이벤트 발생 " + action, "경고", JOptionPane.WARNING_MESSAGE);
         }
         return "fail2\r\n";
     }

@@ -1,4 +1,4 @@
-package kr.onlinetest;
+package kr.realtimetest;
 
 import org.junit.Test;
 
