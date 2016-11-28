@@ -14,24 +14,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="이름"
         android:ems="10"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="102dp"
-        android:id="@+id/et_name" />
+        android:id="@+id/et_name"
+        android:hint="이름" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="학번"
         android:ems="10"
         android:layout_marginTop="44dp"
         android:id="@+id/et_id"
         android:layout_below="@+id/et_name"
         android:layout_alignLeft="@+id/et_name"
-        android:layout_alignStart="@+id/et_name" />
+        android:layout_alignStart="@+id/et_name"
+        android:hint="학번" />
 
     <Button
         android:text="로그인"

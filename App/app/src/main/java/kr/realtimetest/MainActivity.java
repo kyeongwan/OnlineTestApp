@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    String ip;
     Button btLogin;
     Button btStart;
     Button bt1;
@@ -92,6 +93,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent intent = getIntent();
+        ip = intent.getStringExtra("ip");
+
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 
@@ -157,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 });
             }
-        });
+        }, getApplicationContext(), ip);
         thread.start();
 
         btLogin.setOnClickListener(this);

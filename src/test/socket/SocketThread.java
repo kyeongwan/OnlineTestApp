@@ -3,9 +3,6 @@ package test.socket;
 import java.io.*;
 import java.net.Socket;
 
-/**
- * Created by lk on 2016. 11. 20..
- */
 public class SocketThread extends Thread{
 
     private Socket socket;

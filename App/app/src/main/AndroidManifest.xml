@@ -12,6 +12,8 @@
 
 
         <activity android:name="kr.realtimetest.MainActivity">
+        </activity>
+        <activity android:name=".ConnectionActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

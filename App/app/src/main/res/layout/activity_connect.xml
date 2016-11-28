@@ -4,22 +4,23 @@
     android:layout_height="match_parent">
 
     <Button
-        android:text="시험응시"
-        android:layout_width="wrap_content"
+        android:text="연결"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/bt_connect"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/bt_start" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/et_roomcode"
-        android:layout_above="@+id/bt_start"
+        android:id="@+id/et_ip"
+        android:hint="IP"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="70dp"
-        android:hint="RoomCode" />
+        android:layout_marginTop="92dp" />
 </RelativeLayout>

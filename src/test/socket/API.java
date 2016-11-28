@@ -8,10 +8,6 @@ import test.ui.ProblemStatus;
 
 import javax.swing.*;
 
-
-/**
- * Created by lk on 2016. 11. 23..
- */
 public class API {
     private static API instance;
 
@@ -19,6 +15,11 @@ public class API {
 
     }
 
+    /**
+        하나만 있어도 되는 클래스이므로
+        싱글톤으로 구성했습니다
+        getInstance 함수는 API 클래스의 인스턴스를 반환합니다
+     */
     public static API getInstance(){
         if(instance == null){
             instance = new API();
@@ -26,6 +27,21 @@ public class API {
         return instance;
     }
 
+    /**
+     * API에 대한 매핑을 해주는 메소드입니다
+     * @param request   String type 으로 요청을 가져옵니다
+     * req : login id name
+     * res : roomID
+     *
+     * req : question qID
+     * res : type/questionStr
+     *
+     * req : answer pID aNo sID
+     * res : success
+     *
+     * req : event sID action
+     * res : success
+     */
     public String request(String request) {
         if(request.contains("login")){
             System.out.println("aa");
@@ -63,7 +79,7 @@ public class API {
                 pa.studentListLabel[answerNo-1].setText(pa.studentListLabel[answerNo-1].getText() + "\n" + s.getName());
 
                 pa.setProgressbar();
-                if(p.getAnwer() == Integer.parseInt(data[2]))
+                if(p.getAnswer() == Integer.parseInt(data[2]))
                     s.setGrade(s.getGrade() + 10);
 
                 return "success\r\n";
@@ -76,6 +92,7 @@ public class API {
             String id = data[1];
             String action = data[2];
             JOptionPane.showMessageDialog(Main.getInstance().frame, DB.getInstance().getStudentMap().get(id).getName() + " 이벤트 발생 " + action, "경고", JOptionPane.WARNING_MESSAGE);
+            return "success\r\n";
         }
         return "fail2\r\n";
     }

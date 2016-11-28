@@ -1,18 +1,13 @@
 package test.model;
 
-import test.DB;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- * Created by lk on 2016. 11. 23..
- */
 public class Problem {
 
-    int type;
+    int type;       // 참거짓 문제라면 1, 5지선다라면 2
     String question;
-    int anwer;
+    int answer;
     HashMap<Integer, ArrayList<Student>> map;
     int n = 0;
 
@@ -20,11 +15,11 @@ public class Problem {
     public Problem(int type, String question, int answer) {
         this.type = type;
         this.question = question;
-        this.anwer = answer;
+        this.answer = answer;
         map = new HashMap<>();
 
         for (int i = 0; i < 5; i++) {
-            map.put(i, new ArrayList<Student>());
+            map.put(i, new ArrayList<>());
         }
     }
 
@@ -33,8 +28,8 @@ public class Problem {
         return map;
     }
 
-    public int getAnwer() {
-        return anwer;
+    public int getAnswer() {
+        return answer;
     }
 
     public String getQuestion() {

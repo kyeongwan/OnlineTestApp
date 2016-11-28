@@ -116,8 +116,6 @@ public class StudentManager extends JFrame {
 			}
 		});
 		panel_1.add(btnDeleteStudent);
-		
-		
 	}
 
 }

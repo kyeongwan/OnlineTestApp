@@ -6,9 +6,6 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-/**
- * Created by lk on 2016. 11. 19..
- */
 public class SocketServerThread extends Thread{
 
     @Override
