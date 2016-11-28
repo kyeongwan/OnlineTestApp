@@ -234,6 +234,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                         setContentView(R.layout.activity_done);
                                     }
                                 });
+                                thread.endServer();
 
                             } else {
                                 thread.request("answer " + problemNo + " " + (finalI + 1) + " " + idStr + "\r\n", "answer");

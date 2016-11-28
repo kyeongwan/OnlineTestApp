@@ -54,4 +54,12 @@ public class SocketThread extends Thread {
             callback.response("null");
         }
     }
+
+    public void endServer() {
+        try {
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

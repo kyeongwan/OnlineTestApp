@@ -7,6 +7,7 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -55,6 +56,17 @@ public class StudentManager extends JFrame {
 		model.addColumn("Grade");
 
 		List<Student> list = new ArrayList<>(DB.getInstance().getStudentMap().values());
+		list.sort(new Comparator<Student>() {
+			@Override
+			public int compare(Student o1, Student o2) {
+				if(o1.getGrade() > o2.getGrade())
+					return -1;
+				else if(o1.getGrade() == o2.getGrade())
+					return 0;
+				else
+					return 1;
+			}
+		});
 		for(int i=0; i<list.size();i++){
 			Object[] row = {list.get(i).getId(), list.get(i).getName(), list.get(i).getRoomCode(), list.get(i).getGrade() };
 			model.addRow(row);
