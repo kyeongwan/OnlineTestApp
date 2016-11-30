@@ -15,6 +15,7 @@ public class Main {
     public JFrame frame;
     private static Main instance;
     public ProblemStatus problemPanel[];
+    public static boolean end = false;
 
     /**
      * Launch the application.
@@ -76,9 +77,19 @@ public class Main {
         btnServerStart.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new SocketServerThread().start();
+                end = false;
             }
         });
         panel_6.add(btnServerStart);
+
+        JButton btnServerEnd = new JButton("시험 종료");
+        btnServerEnd.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                end = true;
+
+            }
+        });
+        panel_6.add(btnServerEnd);
     }
 
 }

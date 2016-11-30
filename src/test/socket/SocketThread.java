@@ -1,5 +1,7 @@
 package test.socket;
 
+import test.ui.Main;
+
 import java.io.*;
 import java.net.Socket;
 
@@ -8,6 +10,7 @@ public class SocketThread extends Thread{
     private Socket socket;
     InputStream inputStream;
     OutputStream outputStream;
+
 
     public SocketThread(Socket socket){
         this.socket = socket;
@@ -29,10 +32,21 @@ public class SocketThread extends Thread{
             try {
                 String request = reader.readLine();
                 System.out.println(request);
-                String response = API.getInstance().request(request);
-                writer.write(response);
-                writer.flush();
+                if(request.contains("done")){
+                    while(!Main.getInstance().end){
+                        this.sleep(1000);
+                    }
+                    String res= API.getInstance().request(request);
+                    writer.write(res);
+                    writer.flush();
+                }else {
+                    String response = API.getInstance().request(request);
+                    writer.write(response);
+                    writer.flush();
+                }
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }

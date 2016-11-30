@@ -55,6 +55,17 @@ public class SocketThread extends Thread {
         }
     }
 
+    public void readResult(){
+        try {
+            String response = reader.readLine();
+            callback.response("result/" +response);
+            endServer();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public void endServer() {
         try {
             socket.close();

@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     BroadcastReceiver mPowerBroadcast;
     boolean powerOn = false;
+    boolean end = false;
 
 
     @Override
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         System.out.println("stop");
 
 
-        if(powerOn){
+        if(powerOn || end){
             // 화면이 꺼진 상태
         }else{
             // 앱이 내려간 상태
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         System.out.println("restart");
 
 
-        if(powerOn){
+        if(powerOn || end){
             // 화면이 꺼진 상태
         }else{
             // 앱이 내려간 상태
@@ -157,6 +158,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             Toast.makeText(getApplicationContext(), "서버에 연결되어 있지 않습니다", Toast.LENGTH_SHORT).show();
                         } else if (data[0].equals("connect")) {
                             Toast.makeText(getApplicationContext(), "서버에 연결되었습니다", Toast.LENGTH_SHORT).show();
+                        }else if(data[0].equals("result")){
+                            Toast.makeText(getApplicationContext(), data[1], Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -215,6 +218,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 }).start();
                 Toast.makeText(getApplicationContext(), "시험이 시작되었습니다.", Toast.LENGTH_SHORT).show();
+                end = false;
             } else {
                 Toast.makeText(getApplicationContext(), "RoomCode 가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
             }
@@ -226,6 +230,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         @Override
                         public void run() {
                             if (problemNo > 9) {
+                                end = true;
                                 thread.request("answer " + problemNo + " " + (finalI + 1) + " " + idStr + "\r\n", "answer");
                                 runOnUiThread(new Runnable() {
                                     @Override
@@ -234,7 +239,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                         setContentView(R.layout.activity_done);
                                     }
                                 });
-                                thread.endServer();
+                                thread.request("done " + idStr + "\r\n", "result");
+
 
                             } else {
                                 thread.request("answer " + problemNo + " " + (finalI + 1) + " " + idStr + "\r\n", "answer");
